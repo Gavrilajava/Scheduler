@@ -1,0 +1,9 @@
+.container
+  =form_for :login do |f|
+    %fieldset.fieldset
+      %legend Log in:
+      =f.label :name
+      =f.text_field :name, autofocus: true
+      =f.label :password
+      =f.password_field :password
+      =f.submit class: "button"

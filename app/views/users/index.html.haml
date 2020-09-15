@@ -1,0 +1,23 @@
+%h1 All registered users
+%table
+  %thead
+    %th Name
+    %th Role
+    %th Email
+    %th Delete
+    %th Edit
+  %tbody
+    -@users.map do |user|
+      %tr
+        %td 
+          =user.name
+        %td 
+          =user.role
+        %td 
+          =user.email 
+        %td 
+          =link_to 'Delete', user_path(user), method: :delete, class: "secondary button" 
+        %td 
+          =link_to 'Update', edit_user_path(user), class: "secondary button" 
+=render @user
+    
