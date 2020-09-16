@@ -5,31 +5,43 @@ class UsersController < ApplicationController
 
 
   def index
-    @user = User.new
+    @action_user = User.new
     @users = User.all
   end
 
   def edit
   
-  end
+  end 
 
   def update
-    @user.update(user_params)
-    redirect_to users_path
+    if !user_params[:password]
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+    if @action_user.update(user_params)
+      flash[:success] = "User updated successfully!"
+      redirect_to users_path
+    else
+      flash.alert = @action_user.errors.messages
+      redirect_to edit_user_path(@action_user)
+    end
   end
 
   def destroy
-    @user.destroy
-    flash[:notice] = "User deleted successfully!"
+    if  @action_user.destroy
+      flash[:success] = "User deleted successfully!"
+    else
+      flash.alert = @action_user.errors.messages
+    end
     redirect_to users_path
   end
 
   def create
-    @user = User.new(user_params)   
-    if @user.save
-      flash[:notice] = "Account created successfully!"
+    @action_user = User.new(user_params)   
+    if @action_user.save
+      flash[:success] = "Account created successfully!"
     else
-      flash.now.alert = @user.errors
+      flash.alert = @action_user.errors.messages
     end
     redirect_to users_path
   end
@@ -37,12 +49,11 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params[:email] = params[:email].downcase! if params[:email]
     params.require(:user).permit(:name, :role, :email, :password, :password_confirmation)
   end
 
   def action_user
-    @user = User.find(params[:id])
+    @action_user = User.find(params[:id])
   end
 
   def check_priveleges

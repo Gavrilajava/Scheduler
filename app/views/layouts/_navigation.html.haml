@@ -4,18 +4,9 @@
     %ul{class: "menu align-right"}
       = render 'layouts/navigation_links'
   .top-bar-right
-    %ul{class: "dropdown menu", title: current_user.name, data: {dropdown: {menu: true}}}
-      %li
-        %a{href: '#', class: "secondary button"}
-          =current_user.name
-        %ul.menu
-          %li
-            %a{href: "/settings", class: "secondary button"}
-              ="Settings"
-          %li
-            =link_to 'Log Out', logout_path, method: :delete, class: "secondary button"
-          - if current_user.admin
-            %li
-            =link_to 'Users', users_path, class: "secondary button"
+    %ul{class: "vertical menu accordion-menu", data: {accordion: {menu: true}}}
+      %li{aria: {expanded: false}}
+        =link_to current_user.name, logout_path, method: :delete, class: "secondary button"
+
 
   

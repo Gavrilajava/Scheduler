@@ -16,8 +16,8 @@
         %td 
           =user.email 
         %td 
-          =link_to 'Delete', user_path(user), method: :delete, class: "secondary button" 
+          =link_to 'Delete', user_path(user), method: :delete, class: "alert button" 
         %td 
-          =link_to 'Update', edit_user_path(user), class: "secondary button" 
-=render @user
+          =link_to 'Update', edit_user_path(user), class: "warning button" 
+=render @action_user
     

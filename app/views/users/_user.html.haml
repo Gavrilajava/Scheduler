@@ -1,11 +1,11 @@
 .half
-  =form_for @user do |f|
+  =form_for @action_user do |f|
     %fieldset.fieldset
       %legend Create new user:
       =f.label :name
       =f.text_field :name, autofocus: true
       =f.label :role
-      =f.select :role, options_for_select(User::ROLES)
+      =f.select :role, options_for_select(User::ROLES), selected: @action_user.role
       =f.label :email
       =f.email_field :email
       =f.label :password

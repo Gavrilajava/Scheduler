@@ -1,4 +1,6 @@
-%a{href: "/bookings", class: "success button", title: "Bookings"}
-  Bookings
-%a{href: "/tables", class: "warning button", title: "Tables"}
-  Tables
+%a{href: "/workcenters", class: "workcenters button", title: "Workcenters"}
+  Workcenters
+%a{href: "/upload", class: "upload button", title: "Upload"}
+  Upload
+- if current_user.admin
+  =link_to 'Users', users_path, class: "users button"

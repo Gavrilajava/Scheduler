@@ -1,7 +1,18 @@
 -#  Rails flash messages styled for Zurb Foundation
 - flash.each do |key, value|
-  %div{ class: "alert-box #{key} radius", data: {closable: true}}
-    %strong
-      = value
-    %a{href:"#", class: "close", data: {close: true }} &times
+  %div{ class: "callout #{key}", data: {closable: true}}
+    - if value.respond_to?('each')
+      - value.each do |subject, explanation|
+        %p
+          =subject
+          - if explanation.kind_of?(Array)
+            =explanation.join(', ')
+          - else 
+            =explanation
+    - else
+      %p 
+        =value
+    %button{class: "close-button", type: "button", aria: {label: "Dismiss alert"}, data: {close: true }}
+      %span{aria: {hidden: "true"}}
+        &times;
    
