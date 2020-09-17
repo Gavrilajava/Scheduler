@@ -27,12 +27,15 @@ ActiveRecord::Schema.define(version: 2020_09_15_233035) do
   create_table "workcenters", force: :cascade do |t|
     t.string "group"
     t.string "name"
-    t.float "downtime"
-    t.integer "frozen"
-    t.integer "min_setup"
+    t.string "code"
+    t.text "description"
+    t.float "average_downtime"
+    t.integer "frozen_period"
+    t.integer "minimal_setup"
     t.string "setup_reduction_type"
-    t.integer "avg_setup"
-    t.integer "avg_speed"
+    t.integer "average_setup"
+    t.integer "average_speed"
+    t.integer "max_deviation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,27 @@
+%h1 All available workcenters
+=form_for @workcenter do |f|
+  %table
+    %thead
+      %th Code
+      %th Name
+      %th Group
+      %th Description
+      %th Downtime
+      %th Frozen period
+      %th Minimal Setup
+      %th Setup Reduction type
+      %th Average Setup
+      %th Average Speed
+      %th Max Deviation
+      %th Edit
+    %tbody
+      -@workcenters.map do |workcenter|
+        -if workcenter == @workcenter
+          =render partial: 'form', locals: {f: f}
+        -else
+          =render workcenter
+      -if !@workcenter.id
+        =render partial: 'form', locals: {f: f}
+
+
+

@@ -1,0 +1,9 @@
+.half
+  =form_with(url: "/upload", method: "post") do |f|
+    %fieldset.fieldset
+      %legend File upload:
+      = f.label "No File selected", {id: "filename"}
+      = f.label :upload, "Select File", {class: "button"}
+      = f.file_field :file, {class: "show-for-sr", type: "file", id: "upload", accept: "text/csv" }
+      = f.submit class: "button"
+= javascript_include_tag "upload"

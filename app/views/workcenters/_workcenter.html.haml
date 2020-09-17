@@ -1,0 +1,15 @@
+%tr
+  %td=workcenter.code
+  %td=workcenter.name
+  %td=workcenter.group
+  %td=workcenter.description
+  %td=workcenter.average_downtime
+  %td=workcenter.frozen_period
+  %td=workcenter.minimal_setup
+  %td=workcenter.setup_reduction_type
+  %td=workcenter.average_setup
+  %td=workcenter.average_speed
+  %td=workcenter.max_deviation
+  %td
+    =link_to "Edit", edit_workcenter_path(workcenter.id), class: "warning tiny nomargin button"
+    =link_to "Delete", workcenter, method: :delete, class: "alert tiny nomargin button"
