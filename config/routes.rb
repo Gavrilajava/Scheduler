@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   get '/upload', to: 'uploads#show'
   post '/upload', to: 'uploads#create'
 
-  # get '/workcenters', to: 'workcenters#index'
-  
+  get '/schedule/:workcenter', to: 'jobs#index', as: 'schedule'
+  get '/schedule', to: 'jobs#index', as: 'schedules'
+  patch '/schedule/:workcenter', to: 'jobs#move'
+  patch '/schedule', to: 'jobs#move'
+
+  get '/settings', to: 'settings#edit'
+  patch '/settings', to: 'settings#update'
 
 end

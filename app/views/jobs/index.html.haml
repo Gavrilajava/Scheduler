@@ -1,0 +1,43 @@
+%table
+  %thead
+    %th #
+    %th Start
+    %th End
+    %th Delivery
+    %th Production
+    %th Op.
+    %th Name
+    %th FG
+    %th Quantity
+    %th Previous
+    %th Ready
+    %th MR
+    %th Performance
+  %tbody
+    -@jobs.map do |job|
+      %tr{id: job.dynamics_job, draggable: "true", ondrop: "releaseLine(event)", ondragover: "allowDrop(event)", ondragstart: "drag(event)"}
+        %td=job.sequence
+        -if job.fixed_date == job.start
+          %td{class: "nowrap fixed_good"}
+            =job.start.strftime(@settings.time)
+        -elsif job.fixed_date
+          %td{class: "nowrap fixed_bad", title: job.fixed_date.strftime(@settings.time)}
+            =job.start.strftime(@settings.time) 
+        -else
+          %td.nowrap=job.start.strftime(@settings.time)
+        %td.nowrap=job.end.strftime(@settings.time)
+        -if job.production.confirmed_date
+          %td=job.production.confirmed_date.strftime(@settings.date)
+        -elsif job.production.required_date
+          %td=job.production.required_date.strftime(@settings.date)
+        -else
+          %td
+        %td=job.production.order
+        %td=job.operation
+        %td.small=job.production.name
+        %td=job.production.item
+        %td=number_with_delimiter(job.quantity, delimiter: '.')
+        %td=number_with_delimiter(job.previous_quantity, delimiter: '.')
+        %td=number_with_delimiter(job.produced, delimiter: '.')
+        %td=job.setup
+        %td=number_with_delimiter(job.performance, delimiter: '.')

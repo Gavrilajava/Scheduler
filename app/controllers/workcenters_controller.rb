@@ -1,5 +1,6 @@
 class WorkcentersController < ApplicationController
 
+  before_action :authorize
   before_action :get_workcenter, only: [:destroy, :update]
 
   def index

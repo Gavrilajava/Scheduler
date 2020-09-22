@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_one :setting
+
   before_destroy :check_last
 
   ROLES = ['User', "Viewer", 'Admin']

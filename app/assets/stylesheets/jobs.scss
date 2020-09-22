@@ -1,0 +1,26 @@
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.small{
+  font-size: 0.7em;
+}
+
+.solid{
+  // background-color: antiquewhite;
+  border: 1px solid black;
+}
+
+.fixed_bad{
+  color:  FireBrick;
+  font-weight: 800
+}
+
+.fixed_good{
+  color: SeaGreen;
+  font-weight: 800
+}

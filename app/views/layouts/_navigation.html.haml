@@ -1,11 +1,12 @@
--# navigation styled for Zurb Foundation 5
 %nav.top-bar
   .top-bar-section
-    %ul{class: "menu align-right"}
+    %ul{class: "menu align-left"}
       = render 'layouts/navigation_links'
+    -if current_page?(controller: 'jobs', action: 'index')
+      = render 'jobs/header'
   .top-bar-right
     %ul{class: "vertical menu accordion-menu", data: {accordion: {menu: true}}}
-      %li{aria: {expanded: false}}
+      %li
         =link_to current_user.name, logout_path, method: :delete, class: "secondary button"
 
 

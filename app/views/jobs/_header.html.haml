@@ -1,0 +1,6 @@
+%ul{class: "menu align-left"}
+  -@menu[:groups].each do |group|
+    =link_to group, schedule_path(group), class: group == @workcenter.group ? "lawngreen button" : "khaki button"
+%ul{class: "menu align-left"}
+  -@menu[:workcenters].each do |workcenter|
+    =link_to workcenter, schedule_path(workcenter), class: workcenter == @workcenter.code ? "lightcoral button" : "lightpink button"
