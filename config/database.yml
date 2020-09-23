@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: scheduler_production
-  username: scheduler
+  username: schedule
   password: <%= ENV['SCHEDULER_DATABASE_PASSWORD'] %>
