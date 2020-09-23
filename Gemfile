@@ -60,7 +60,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
-gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'csv'
 gem 'activerecord-import'
