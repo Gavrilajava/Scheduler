@@ -13,7 +13,7 @@ class UploadsController < ApplicationController
     if Production.check_columns(column_names) && Job.check_columns(column_names) 
       Production.destroy_all
       rows.each{ |row|
-        workcenter = Workcenter.find_by(code: row[column_names.index("Рабочий центр")])
+        workcenter = Workcenter.find_by(code: row[0])
         production = Production.find_by(order: row[column_names.index(Production.upload_columns[:order])])
         if workcenter
           if !production
