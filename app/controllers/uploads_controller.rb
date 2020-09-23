@@ -36,7 +36,7 @@ class UploadsController < ApplicationController
             flash.alert = job.errors.messages
           end
         else
-          flash.alert == (flash.alert + ["workcenter #{row[0]} not found"]).uniq
+          flash.alert = (flash.alert + ["workcenter #{row[0]} not found"]).uniq
         end
       }
       Workcenter.all.each { |wc| wc.set_start_date}
