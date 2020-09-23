@@ -82,4 +82,4 @@ production:
   <<: *default
   database: scheduler_production
   username: schedule
-  password: <%= ENV['SCHEDULER_DATABASE_PASSWORD'] %>
+  password: <%= ENV['SCHEDULE_DATABASE_PASSWORD'] %>
