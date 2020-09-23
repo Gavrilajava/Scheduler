@@ -13,7 +13,7 @@ class UploadsController < ApplicationController
     if Production.check_columns(column_names) && Job.check_columns(column_names) 
       Production.destroy_all
       rows.each{ |row|
-        workcenter = Workcenter.find_by(code: row[0])
+        workcenter = Workcenter.find_by(code: row[0].to_s)
         production = Production.find_by(order: row[column_names.index(Production.upload_columns[:order])])
         if workcenter
           if !production
@@ -35,6 +35,8 @@ class UploadsController < ApplicationController
           if !job.valid?
             flash.alert = job.errors.messages
           end
+        else
+          flash.alert == (flash.alert + ["workcenter #{row[0]} not found"]).uniq
         end
       }
       Workcenter.all.each { |wc| wc.set_start_date}
